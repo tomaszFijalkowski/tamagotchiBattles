@@ -26,6 +26,7 @@ public class Hero {
     private int experience = 0;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Hero() {
