@@ -14,7 +14,7 @@ import javax.persistence.*;
         private int roleId;
 
         @Column(name = "role")
-        private String role;
+        public String role;
 
         public RoleUser() {
         }

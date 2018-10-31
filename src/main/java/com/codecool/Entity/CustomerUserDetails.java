@@ -1,9 +1,11 @@
 package com.codecool.Entity;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 public class CustomerUserDetails extends User implements UserDetails {
 
@@ -12,19 +14,16 @@ public class CustomerUserDetails extends User implements UserDetails {
         super(user);
     }
 
-    @Override
+
+
+       @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
-//       @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//
-//
-//        return getRoles()
-//                .stream()
-//                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRole()))
-//                .collect(Collectors.toList());
-//    }
-        return null;
+
+        return getRoles()
+                .stream()
+                .map(roleUser -> new SimpleGrantedAuthority("ROLE_" + roleUser.getRoleName()))
+                .collect(Collectors.toList());
     }
 
 
