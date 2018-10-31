@@ -5,6 +5,7 @@ import com.codecool.Entity.Hero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,16 +15,24 @@ public class HeroService {
     @Autowired
     private HeroRepository heroRepository;
 
-    // example service method
-    public List<Hero> getAllHeroes() {
-        List<Hero> heroes = new ArrayList<>();
-        heroRepository.findAll().forEach(heroes::add);
-        return heroes;
+    public List<Hero> getAllHeroesByUserId(Long userId) {
+        return new ArrayList<>(heroRepository.findByUserId(userId));
     }
 
-    // example service method
+    public Hero getHeroById(Long heroId) {
+        return heroRepository.findById(heroId);
+    }
+
     public void addHero(Hero hero) {
         heroRepository.save(hero);
     }
 
+    public void updateHero(Hero hero) {
+        heroRepository.save(hero);
+    }
+
+    @Transactional
+    public void deleteHero(Long heroId) {
+        heroRepository.deleteById(heroId);
+    }
 }
