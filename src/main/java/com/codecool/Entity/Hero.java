@@ -12,7 +12,9 @@ public class Hero {
     private Long id;
     private String name;
 
+    @Enumerated(EnumType.STRING)
     private AttackType primaryAttack;
+    @Enumerated(EnumType.STRING)
     private AttackType secondaryAttack;
 
     private int speed;
