@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head xmlns:th="http://www.w3.org/1999/xhtml" th:replace="header.html :: head"></head>
+
+<body>
+<header th:replace="header.html :: header"></header>
+<div th:replace="navbar.html"></div>
+
+<div class="container">
+
+    <div class="container-fluid mt-4 align-content-center">
+        <div class="row justify-content-left pt-3">
+            <div class="col-4 mb-3" th:each="hero : ${heroes}">
+
+
+                <div th:if="${hero.primaryAttack == T(com.codecool.Enum.AttackType).EARTH}"
+                     class="card border-success pointer" data-toggle="collapse" href="#collapseStatistics">
+                    <img class="card-img-top" src="/img/earth.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${hero.name}"></h5>
+                        <h6 class="card-subtitle mb-1 text-muted">Earth</h6>
+
+                        <div class="collapse" id="collapseStatistics">
+
+                            <div class="row pt-3">
+                                <div class="col-md-4 text-center">Attack<br><span class="font-weight-bold text-danger"
+                                                                                  th:text="${hero.attack}"></span></div>
+                                <div class="col-md-4 text-center">Speed<br><span class="font-weight-bold text-warning"
+                                                                                 th:text="${hero.speed}"></span></div>
+                                <div class="col-md-4 text-center">Defense<br><span
+                                        class="font-weight-bold text-secondary"
+                                        th:text="${hero.speed}"></span></div>
+                            </div>
+
+                            <h6 class="card-subtitle mb-2 mt-3 text-muted">Statistics</h6>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Experience: <span class="font-weight-bold"
+                                                                              th:text="${hero.experience}"></span></li>
+                                <li class="list-group-item">Battles Won: <span class="font-weight-bold"
+                                                                               th:text="${hero.battlesWon}"></span></li>
+                                <li class="list-group-item">Battles Lost: <span class="font-weight-bold"
+                                                                                th:text="${hero.battlesFought-hero.battlesWon}"></span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div th:if="${hero.primaryAttack == T(com.codecool.Enum.AttackType).FIRE}"
+                     class="card border-danger pointer" data-toggle="collapse" href="#collapseStatisticsTwo">
+                    <img class="card-img-top" src="/img/fire.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${hero.name}"></h5>
+                        <h6 class="card-subtitle mb-1 text-muted">Fire</h6>
+
+                        <div class="collapse" id="collapseStatisticsTwo">
+
+                            <div class="row pt-3">
+                                <div class="col-md-4 text-center">Attack<br><span class="font-weight-bold text-danger"
+                                                                                  th:text="${hero.attack}"></span></div>
+                                <div class="col-md-4 text-center">Speed<br><span class="font-weight-bold text-warning"
+                                                                                 th:text="${hero.speed}"></span></div>
+                                <div class="col-md-4 text-center">Defense<br><span
+                                        class="font-weight-bold text-secondary"
+                                        th:text="${hero.speed}"></span></div>
+                            </div>
+
+                            <h6 class="card-subtitle mb-2 mt-3 text-muted">Statistics</h6>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Experience: <span class="font-weight-bold"
+                                                                              th:text="${hero.experience}"></span></li>
+                                <li class="list-group-item">Battles Won: <span class="font-weight-bold"
+                                                                               th:text="${hero.battlesWon}"></span></li>
+                                <li class="list-group-item">Battles Lost: <span class="font-weight-bold"
+                                                                                th:text="${hero.battlesFought-hero.battlesWon}"></span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div th:if="${hero.primaryAttack == T(com.codecool.Enum.AttackType).WATER}"
+                     class="card border-info pointer" data-toggle="collapse" href="#collapseStatisticsThree">
+                    <img class="card-img-top" src="/img/water.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${hero.name}"></h5>
+                        <h6 class="card-subtitle mb-1 text-muted">Water</h6>
+
+                        <div class="collapse" id="collapseStatisticsThree">
+
+                            <div class="row pt-3">
+                                <div class="col-md-4 text-center">Attack<br><span class="font-weight-bold text-danger"
+                                                                                  th:text="${hero.attack}"></span></div>
+                                <div class="col-md-4 text-center">Speed<br><span class="font-weight-bold text-warning"
+                                                                                 th:text="${hero.speed}"></span></div>
+                                <div class="col-md-4 text-center">Defense<br><span
+                                        class="font-weight-bold text-secondary"
+                                        th:text="${hero.speed}"></span></div>
+                            </div>
+
+                            <h6 class="card-subtitle mb-2 mt-3 text-muted">Statistics</h6>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Experience: <span class="font-weight-bold"
+                                                                              th:text="${hero.experience}"></span></li>
+                                <li class="list-group-item">Battles Won: <span class="font-weight-bold"
+                                                                               th:text="${hero.battlesWon}"></span></li>
+                                <li class="list-group-item">Battles Lost: <span class="font-weight-bold"
+                                                                                th:text="${hero.battlesFought-hero.battlesWon}"></span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+
+<div th:replace="scripts.html"></div>
+<div th:replace="footer.html"></div>
+</body>
+</html>
