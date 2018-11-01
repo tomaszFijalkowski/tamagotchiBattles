@@ -16,13 +16,13 @@ public class CustomerUserDetails extends User implements UserDetails {
 
 
 
-       @Override
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-
+//    return null;
 
         return getRoles()
                 .stream()
-                .map(roleUser -> new SimpleGrantedAuthority("ROLE_" + roleUser.getRoleName()))
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRoleName()))
                 .collect(Collectors.toList());
     }
 

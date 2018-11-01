@@ -5,8 +5,8 @@ import javax.persistence.*;
 
 
     @Entity
-    @Table(name = "role")
-    public class RoleUser {
+    @Table(name = "role", schema = "public")
+    public class Role {
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,7 +16,7 @@ import javax.persistence.*;
         @Column(name = "role")
         public String role;
 
-        public RoleUser() {
+        public Role() {
         }
 
         public int getRoleId() {
