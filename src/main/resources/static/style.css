@@ -53,8 +53,12 @@ footer {
     text-align: center;
     height: 60px;
     width: 100%;
-    position: absolute;
     bottom: 0;
+    position: absolute;
+}
+
+.pointer:hover {
+    cursor: pointer;
 }
 
 
