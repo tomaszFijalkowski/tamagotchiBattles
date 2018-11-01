@@ -19,7 +19,7 @@ public class User {
     private String username;
     @Column(name = "active")
     private int active;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = com.codecool.Entity.Role.class)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> role;
 
@@ -83,7 +83,7 @@ public class User {
         this.active = active;
     }
 
-    @OneToMany(mappedBy = "user_role")
+//    @OneToMany(mappedBy = "user_role")
     public Set<Role> getRoles() {
         return role;
     }

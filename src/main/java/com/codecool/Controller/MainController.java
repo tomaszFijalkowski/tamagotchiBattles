@@ -14,7 +14,7 @@ public class MainController {
 
 
 
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('user')")
     @GetMapping("/secured/all")
     public String securedHello() {
         return "Secured Hello";
