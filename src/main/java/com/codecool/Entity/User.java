@@ -12,7 +12,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    private Long id;
+    private int id;
     @Column(name = "password")
     private String password;
     @Column(name = "username")
@@ -50,11 +50,11 @@ public class User {
         this.role = user.getRoles();
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -83,7 +83,7 @@ public class User {
         this.active = active;
     }
 
-//    @OneToMany(mappedBy = "user_role")
+   @OneToMany(mappedBy = "user_role")
     public Set<Role> getRoles() {
         return role;
     }
