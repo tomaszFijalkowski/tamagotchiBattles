@@ -9,12 +9,9 @@ import java.util.stream.Collectors;
 
 public class CustomerUserDetails extends User implements UserDetails {
 
-
     public CustomerUserDetails(final User user) {
         super(user);
     }
-
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -22,7 +19,7 @@ public class CustomerUserDetails extends User implements UserDetails {
 
         return getRoles()
                 .stream()
-                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRoleName()))
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRole()))
                 .collect(Collectors.toList());
     }
 

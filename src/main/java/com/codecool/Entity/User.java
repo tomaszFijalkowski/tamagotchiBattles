@@ -1,6 +1,5 @@
 package com.codecool.Entity;
 
-import javax.management.relation.Role;
 import javax.persistence.*;
 import java.util.Set;
 
@@ -10,17 +9,23 @@ public class User {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name="identifier", sequenceName="user_seq", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="identifier")
+    @Column(name = "id")
     private int id;
+
     @Column(name = "password")
     private String password;
+
     @Column(name = "username")
     private String username;
+
     @Column(name = "active")
     private int active;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = com.codecool.Entity.Role.class)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> role;
 
 //    @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,7 +51,9 @@ public class User {
     }
 
     public User(User user) {
-        super();
+//        super();
+        this.username = user.username;
+        this.password = user.password;
         this.role = user.getRoles();
     }
 
