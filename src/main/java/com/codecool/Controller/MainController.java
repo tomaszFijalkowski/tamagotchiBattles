@@ -1,16 +1,23 @@
 package com.codecool.Controller;
 
+import com.codecool.Entity.Room;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Map;
 
 @RestController
 public class MainController {
 
-    @GetMapping("/")
-    public String getProducts(){
-        return "index";
-    }
+    private ArrayList<Room> rooms = new ArrayList<>();
+
+//    @GetMapping("/")
+//    public String getProducts(){
+//        return "index";
+//    }
 
 
 
@@ -25,9 +32,10 @@ public class MainController {
         return "alternate";
     }
 
-
-
-
-
-
+    private void addTestRooms() {
+        rooms.clear();
+        rooms.add(new Room("Kurnik"));
+        rooms.add(new Room("Stodoła"));
+        rooms.add(new Room("Stajnia"));
+    }
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head xmlns:th="http://www.w3.org/1999/xhtml" th:replace="header.html :: head"></head>
+
+<body>
+<header th:replace="header.html :: header"></header>
+<div th:replace="navbar.html"></div>
+
+<div class="container ">
+    <div class="row justify-content-md-center  mt-3 align-items-center">
+        <div class="col-10">
+            <div class="list-group bg-light mt-3" style="width: 100%; min-width: 18rem;">
+                <div class="card-header bg-light text-center">
+                    <h5>Join the room or create your own
+                        <button type="button" class="btn btn-primary ml-4">+</button>
+                    </h5>
+
+                </div>
+                <ul class="list-group " th:each="room: ${rooms}">
+
+                    <li class="list-group-item list-group-item text-center">
+                        <button type="button" class="btn btn-outline-success ml-4 disabled"
+                                th:text="${room.name}"></button>
+                        -<p></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="scripts.html"></div>
+<div th:replace="footer.html"></div>
+</body>
+</html>
