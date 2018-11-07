@@ -4,8 +4,10 @@ import com.codecool.Entity.Hero;
 import com.codecool.Service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class HeroController {
@@ -14,8 +16,10 @@ public class HeroController {
     private HeroService heroService;
 
     @GetMapping("/users/{userId}/heroes")
-    public List<Hero> getAllHeroesByUserId(@PathVariable Long userId){
-        return heroService.getAllHeroesByUserId(userId);
+    public ModelAndView getAllHeroesByUserId(@PathVariable Long userId, Map<String, Object> model) {
+        List<Hero> heroes = heroService.getAllHeroesByUserId(userId);
+        model.put("heroes", heroes);
+        return new ModelAndView("heroes", model);
     }
 
     @GetMapping("/users/{userId}/heroes/{heroId}")
