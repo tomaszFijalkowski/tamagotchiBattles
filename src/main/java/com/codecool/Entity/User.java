@@ -1,16 +1,43 @@
 package com.codecool.Entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "user", schema = "public")
 public class User {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Id
-    private Long id;
-    private String username;
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "identifier", sequenceName = "user_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "identifier")
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "active")
+    private int active;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = com.codecool.Entity.Role.class)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> role;
+
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Id
+//    private Long id;
+//    private String username;
+//    private String password;
+//    private int active;
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+//    private Set<Role> role;
+
 
     public User() {
     }
@@ -19,13 +46,21 @@ public class User {
         super();
         this.username = username;
         this.password = password;
+
     }
 
-    public Long getId() {
+    public User(User user) {
+//        super();
+        this.username = user.username;
+        this.password = user.password;
+        this.role = user.getRoles();
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -44,4 +79,23 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
+    @OneToMany(mappedBy = "user_role")
+    public Set<Role> getRoles() {
+        return role;
+    }
+
+    public void setRoles(Set<Role> role) {
+        this.role = role;
+    }
+
 }

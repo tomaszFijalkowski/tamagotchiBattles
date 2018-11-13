@@ -16,14 +16,14 @@ public class HeroController {
     private HeroService heroService;
 
     @GetMapping("/users/{userId}/heroes")
-    public ModelAndView getAllHeroesByUserId(@PathVariable Long userId, Map<String, Object> model) {
+    public ModelAndView getAllHeroesByUserId(@PathVariable int userId, Map<String, Object> model) {
         List<Hero> heroes = heroService.getAllHeroesByUserId(userId);
         model.put("heroes", heroes);
         return new ModelAndView("heroes", model);
     }
 
     @GetMapping("/users/{userId}/heroes/{heroId}")
-    public Hero getHeroById(@PathVariable Long heroId){
+    public Hero getHeroById(@PathVariable int heroId) {
         return heroService.getHeroById(heroId);
     }
 
@@ -33,12 +33,12 @@ public class HeroController {
     }
 
     @PutMapping("/users/{userId}/heroes/{heroId}")
-    public void updateHero(@RequestBody Hero hero, @PathVariable Long heroId) {
+    public void updateHero(@RequestBody Hero hero, @PathVariable int heroId) {
         heroService.updateHero(hero);
     }
 
     @DeleteMapping("/users/{userId}/heroes/{heroId}")
-    public void deleteHero(@PathVariable Long heroId){
+    public void deleteHero(@PathVariable int heroId) {
         heroService.deleteHero(heroId);
     }
 
