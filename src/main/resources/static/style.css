@@ -67,3 +67,27 @@ footer {
 
 
 
+
+.logoImage {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+}
+
+nav {
+    font-size: large;
+    box-shadow: 0 10px 8px rgba(44, 62, 80, 0.3);
+}
+
+footer {
+    background-color: var(--light-grey);
+    margin-bottom: 0;
+    padding: 20px;
+    color: var(--mid-grey);
+    font-size: small;
+    text-align: center;
+    height: 60px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}

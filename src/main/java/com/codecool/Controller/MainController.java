@@ -1,33 +1,36 @@
 package com.codecool.Controller;
 
 import com.codecool.Entity.Room;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Map;
 
-
-@Controller
+@RestController
 public class MainController {
 
     private ArrayList<Room> rooms = new ArrayList<>();
 
-    @GetMapping("/")
-    public ModelAndView home(Map<String, Object> model) {
-        addTestRooms();
-        for (Room room : rooms) {
-            model.put(room.getName(), room.getUsersInRoom());
-        }
-        return new ModelAndView("index", model);
+//    @GetMapping("/")
+//    public String getProducts(){
+//        return "index";
+//    }
+
+
+
+    @PreAuthorize("hasAnyRole('user')")
+    @GetMapping("/secured/all")
+    public String securedHello() {
+        return "Secured Hello";
     }
 
-    @GetMapping("/home")
-    public String showRooms() {
-        return "redirect:/";
+    @GetMapping("/secured/alternate")
+    public String alternate() {
+        return "alternate";
     }
-
 
     private void addTestRooms() {
         rooms.clear();

@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class TamagotchiBattlesApp {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         SpringApplication.run(TamagotchiBattlesApp.class, args);
-
     }
 }
