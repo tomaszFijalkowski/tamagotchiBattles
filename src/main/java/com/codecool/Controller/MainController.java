@@ -15,11 +15,9 @@ public class MainController {
     private ArrayList<Room> rooms = new ArrayList<>();
 
 //    @GetMapping("/")
-//    public String getProducts(){
+//    public String getProducts() {
 //        return "index";
 //    }
-
-
 
     @PreAuthorize("hasAnyRole('user')")
     @GetMapping("/secured/all")

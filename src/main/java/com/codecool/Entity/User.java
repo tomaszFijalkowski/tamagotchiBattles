@@ -10,8 +10,8 @@ public class User {
 
     @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
-    @SequenceGenerator(name="identifier", sequenceName="user_seq", allocationSize=1)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="identifier")
+    @SequenceGenerator(name = "identifier", sequenceName = "user_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "identifier")
     @Column(name = "id")
     private int id;
 
@@ -37,7 +37,6 @@ public class User {
 //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 //    private Set<Role> role;
-
 
 
     public User() {
@@ -90,7 +89,7 @@ public class User {
         this.active = active;
     }
 
-   @OneToMany(mappedBy = "user_role")
+    @OneToMany(mappedBy = "user_role")
     public Set<Role> getRoles() {
         return role;
     }

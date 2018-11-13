@@ -24,8 +24,6 @@ public class CustomerUserDetails extends User implements UserDetails {
     }
 
 
-
-
     @Override
     public String getPassword() {
         return super.getPassword();

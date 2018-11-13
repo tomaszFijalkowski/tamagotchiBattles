@@ -15,11 +15,11 @@ public class HeroService {
     @Autowired
     private HeroRepository heroRepository;
 
-    public List<Hero> getAllHeroesByUserId(Long userId) {
+    public List<Hero> getAllHeroesByUserId(int userId) {
         return new ArrayList<>(heroRepository.findByUserId(userId));
     }
 
-    public Hero getHeroById(Long heroId) {
+    public Hero getHeroById(int heroId) {
         return heroRepository.findById(heroId);
     }
 
@@ -32,7 +32,7 @@ public class HeroService {
     }
 
     @Transactional
-    public void deleteHero(Long heroId) {
+    public void deleteHero(int heroId) {
         heroRepository.deleteById(heroId);
     }
 }

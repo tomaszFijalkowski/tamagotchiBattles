@@ -24,15 +24,6 @@ public class CustomerUserDetailsService implements UserDetailsService {
 
         Optional<User> optionalUser = userRepository.findByUsername(username);
 
-//        optionalUser.ifPresent(user -> {
-//            log.info("Przed mapowaniem: ");
-//            log.info("ID " + user.getId());
-//            log.info("PASSWORD " + user.getPassword());
-//            log.info("USERNAME " + user.getUsername());
-//            user.getRoles().forEach(r -> log.info(r.toString()));
-//        });
-
-
         CustomerUserDetails x = new CustomerUserDetails(optionalUser.get());
         CustomerUserDetails data = optionalUser
                 .map(user -> new CustomerUserDetails(user)).get();
