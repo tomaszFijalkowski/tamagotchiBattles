@@ -17,6 +17,7 @@ public class Hero {
     @Enumerated(EnumType.STRING)
     private AttackType secondaryAttack;
 
+
     private int speed;
     private int defense;
     private int attack;
@@ -24,6 +25,8 @@ public class Hero {
     private int battlesFought = 0;
     private int battlesWon = 0;
     private int experience = 0;
+
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -115,12 +118,20 @@ public class Hero {
         this.battlesFought = battlesFought;
     }
 
+    public void increaseBattlesFought() {
+        this.battlesFought++;
+    }
+
     public int getBattlesWon() {
         return battlesWon;
     }
 
     public void setBattlesWon(int battlesWon) {
         this.battlesWon = battlesWon;
+    }
+
+    public void increaseBattlesWon(int battlesWon) {
+        this.battlesWon ++;
     }
 
     public int getExperience() {
@@ -130,4 +141,10 @@ public class Hero {
     public void setExperience(int experience) {
         this.experience = experience;
     }
+
+    public void addExperience(int experience) {
+        this.experience += experience;
+    }
+
+
 }
